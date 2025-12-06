@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ChildCategory;
+use App\Models\SubCategory;
 
 class FrontendProductController extends Controller
 {
@@ -22,7 +24,20 @@ class FrontendProductController extends Controller
                 'category_id' => $category->id,
                 'is_approved' => 1,
                 'status' => 1])->paginate(12);
+        }elseif($request->has('subcategory')){
+            $category = SubCategory::where('slug', $request->subcategory)->first();
+            $products = Product::where([
+                'sub_category_id' => $category->id,
+                'is_approved' => 1,
+                'status' => 1])->paginate(1);
+        }elseif($request->has('childcategory')){
+            $category = ChildCategory::where('slug', $request->childcategory)->first();
+            $products = Product::where([
+                'child_category_id' => $category->id,
+                'is_approved' => 1,
+                'status' => 1])->paginate(1);
         }
+
         return view('frontend.pages.product', compact('products'));
     }
 

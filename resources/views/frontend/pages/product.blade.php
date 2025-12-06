@@ -253,24 +253,9 @@
                                             <i class="fas fa-list-ul"></i>
                                         </button>
                                     </div>
-                                    <div class="wsus__topbar_select">
-                                        <select class="select_2" name="state">
-                                            <option>default shorting</option>
-                                            <option>short by rating</option>
-                                            <option>short by latest</option>
-                                            <option>low to high </option>
-                                            <option>high to low</option>
-                                        </select>
-                                    </div>
+                                    
                                 </div>
-                                <div class="wsus__topbar_select">
-                                    <select class="select_2" name="state">
-                                        <option>show 12</option>
-                                        <option>show 15</option>
-                                        <option>show 18</option>
-                                        <option>show 21</option>
-                                    </select>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="tab-content" id="v-pills-tabContent">
@@ -403,30 +388,20 @@
                                     
                                 </div>
                             </div>
+                            <div>
+                                @if(count($products) == 0)
+                                    <h4 class="text-center">No products found!</h4>     
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-12">
-                    <section id="pagination">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link page_active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </section>
+                    <div class="pagination_wrapper" style="display: flex;justify-content:center;">
+                        @if($products->hasPages())                        
+                            {{ $products->withQueryString()->links() }}                        
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
