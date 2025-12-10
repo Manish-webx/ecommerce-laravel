@@ -38,7 +38,9 @@ class FrontendProductController extends Controller
                 'status' => 1])->paginate(1);
         }
 
-        return view('frontend.pages.product', compact('products'));
+        $categories = Category::where('status', 1)->get();  
+
+        return view('frontend.pages.product', compact('products', 'categories'));
     }
 
     public function viewListType(Request $request){
