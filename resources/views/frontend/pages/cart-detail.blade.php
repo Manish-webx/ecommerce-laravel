@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-  Cart Details | {{$setting->site_name}}
+  Cart Details Vai Git hub| {{$setting->site_name}}
 @endsection
 
 @section('content')
