@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    Product Page
+    Product Page Git
 @endsection
 
 @section('content')
