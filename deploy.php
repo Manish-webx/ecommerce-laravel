@@ -5,7 +5,7 @@
  * Used for automatically deploying websites via GitHub Webhooks.
  */
 
-// The commands to run. 
+// The commands to run should ok?. 
 // 1. Go to the project folder (Step 2A repository path)
 // 2. Pull the latest changes
 // 3. Run the cPanel deployment (process .cpanel.yml tasks)
