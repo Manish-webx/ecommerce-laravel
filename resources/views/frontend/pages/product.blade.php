@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    Product Page Cpanel Deployment 1
+    Product Page 
 @endsection
 
 @section('content')
