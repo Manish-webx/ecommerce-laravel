@@ -23,19 +23,34 @@ class FrontendProductController extends Controller
             $products = Product::where([
                 'category_id' => $category->id,
                 'is_approved' => 1,
-                'status' => 1])->paginate(12);
+                'status' => 1])
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })                
+                ->paginate(12);
         }elseif($request->has('subcategory')){
             $category = SubCategory::where('slug', $request->subcategory)->first();
             $products = Product::where([
                 'sub_category_id' => $category->id,
                 'is_approved' => 1,
-                'status' => 1])->paginate(1);
+                'status' => 1])
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })  
+                ->paginate(1);
         }elseif($request->has('childcategory')){
             $category = ChildCategory::where('slug', $request->childcategory)->first();
             $products = Product::where([
                 'child_category_id' => $category->id,
                 'is_approved' => 1,
-                'status' => 1])->paginate(1);
+                'status' => 1])
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })  
+                ->paginate(1);
         }
 
         $categories = Category::where('status', 1)->get();  

@@ -90,12 +90,12 @@
                                         <div class="price_ranger">
                                             <form action="{{url()->current()}}">
                                                 @foreach (request()->query() as $key => $value)
-                                                    @if ($key != 'parice_range')
+                                                    @if ($key != 'range')
                                                         <input type="hidden" name="{{$key}}" value="{{$value}}">
                                                     @endif                                                    
                                                 @endforeach
                                            
-                                                <input type="hidden" id="slider_range" name="parice_range" class="flat-slider" />
+                                                <input type="hidden" id="slider_range" name="range" class="flat-slider" />
                                                 <button type="submit" class="common_btn">filter</button>
                                             </form>
                                         </div>
