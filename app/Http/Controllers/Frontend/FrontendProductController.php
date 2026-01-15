@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\ChildCategory;
 use App\Models\SubCategory;
 
@@ -51,16 +52,29 @@ class FrontendProductController extends Controller
                     return $query->whereBetween('price', [$price[0], $price[1]]);
                 })  
                 ->paginate(1);
+        }elseif($request->has('brand')){
+            $brand = Brand::where('slug', $request->brand)->first();
+            $products = Product::where([
+                'brand_id' => $brand->id,
+                'is_approved' => 1,
+                'status' => 1])
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })  
+                ->paginate(12);
         }
+        
 
         $categories = Category::where('status', 1)->get();  
+        $brands = Brand::where('status', 1)->get();
 
-        return view('frontend.pages.product', compact('products', 'categories'));
+        return view('frontend.pages.product', compact('products', 'categories', 'brands'));
     }
 
     public function viewListType(Request $request){
         $view_type = $request->view_type;
-       session()->put('product_view_type', $view_type);
+        session()->put('product_view_type', $view_type);
        
        
 

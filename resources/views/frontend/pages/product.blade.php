@@ -102,41 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree2">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree2" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        size
-                                    </button>
-                                </h2>
-                                <div id="collapseThree2" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingThree2" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                small
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                medium
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked2">
-                                            <label class="form-check-label" for="flexCheckChecked2">
-                                                large
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree3">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -148,93 +114,16 @@
                                 <div id="collapseThree3" class="accordion-collapse collapse show"
                                     aria-labelledby="headingThree3" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault11">
-                                            <label class="form-check-label" for="flexCheckDefault11">
-                                                gentle park
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked22">
-                                            <label class="form-check-label" for="flexCheckChecked22">
-                                                colors
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked222">
-                                            <label class="form-check-label" for="flexCheckChecked222">
-                                                yellow
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked33">
-                                            <label class="form-check-label" for="flexCheckChecked33">
-                                                enice man
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked333">
-                                            <label class="form-check-label" for="flexCheckChecked333">
-                                                plus point
-                                            </label>
-                                        </div>
+                                        <ul>
+                                            @foreach ($brands as $brand)
+                                                <li><a href="{{route('products.index', ['brand'=> $brand->slug])}}">{{$brand->name}}</a></li>    
+                                            @endforeach
+                                                                                 
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="true"
-                                        aria-controls="collapseThree">
-                                        color
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefaultc1">
-                                            <label class="form-check-label" for="flexCheckDefaultc1">
-                                                black
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckCheckedc2">
-                                            <label class="form-check-label" for="flexCheckCheckedc2">
-                                                white
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckCheckedc3">
-                                            <label class="form-check-label" for="flexCheckCheckedc3">
-                                                green
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckCheckedc4">
-                                            <label class="form-check-label" for="flexCheckCheckedc4">
-                                                pink
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckCheckedc5">
-                                            <label class="form-check-label" for="flexCheckCheckedc5">
-                                                red
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -284,14 +173,14 @@
                                                     " alt="product" class="img-fluid w-100 img_2" />
                                                 </a>
                                                 <ul class="wsus__single_pro_icon">
-                                                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$product->id}}"><i
+                                                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#product-{{$product->id}}"><i
                                                                 class="far fa-eye"></i></a></li>
                                                     <li><a href="#"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="#"><i class="far fa-random"></i></a>
                                                 </ul>
                                                 <div class="wsus__product_details">
                                                     <a class="wsus__category" href="#">{{ $product->category->name }}</a>
-                                                    <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{$product->name}}</a>
+                                                    <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{textlimit($product->name, 4)}}</a>
                                                     <p class="wsus__pro_rating">
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
@@ -359,7 +248,7 @@
                                                     <i class="fas fa-star-half-alt"></i>
                                                     <span>(17 review)</span>
                                                 </p>
-                                                <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{$product->name}}</a>
+                                                <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{textlimit($product->name, 4)}}</a>
                                                  @if (checkDiscount($product))
                                                     <p class="wsus__price">{{$setting->currency_icon}}{{ $product->offer_price }} <del>{{$setting->currency_icon}}{{ $product->price }}</del></p>
                                                     @else
@@ -415,6 +304,109 @@
 
 @endsection
 
+@foreach ($products as $product)
+
+ <section class="product_popup_modal">
+    <div class="modal fade" id="product-{{$product->id}}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                            class="far fa-times"></i></button>
+                    <div class="row">
+                        <div class="col-xl-6 col-12 col-sm-10 col-md-8 col-lg-6 m-auto display">
+                            <div class="wsus__quick_view_img">
+                                @if ($product->video_link)
+                                    <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
+                                        href="{{$product->video_link}}">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                @endif
+                                <div class="row modal_slider">
+                                    <div class="col-xl-12">
+                                        <div class="modal_slider_img">
+                                            <img src="{{asset($product->thumb_img)}}" alt="product" class="img-fluid w-100">
+                                        </div>
+                                    </div>
+                                    @if (count($product->productImageGalleries) == 0)
+                                        <div class="col-xl-12">
+                                            <div class="modal_slider_img">
+                                                <img src="{{asset($product->thumb_img)}}" alt="product" class="img-fluid w-100">
+                                            </div>
+                                        </div>                                                
+                                    @endif
+                                    @foreach ($product->productImageGalleries as $productImage )
+                                        <div class="col-xl-12">
+                                            <div class="modal_slider_img">
+                                                <img src="{{asset($productImage->image)}}" alt="{{asset($productImage->name)}}" class="img-fluid w-100">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
+                            <div class="wsus__pro_details_text">
+                                <a class="title" href="{{route('product-detail', $product->slug)}}">{{$product->name}}</a>
+                                <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
+                                @if (checkDiscount($product))
+                                    <h4>{{$setting->currency_icon}}{{$product->offer_price}} <del>${{$product->price}}</del></h4>
+                                @else
+                                <h4>{{$setting->currency_icon}}{{$product->price}}</h4>
+                                @endif
+                                
+                                <p class="description">{!!$product->short_description!!}</p>
+
+                                <form class="shopping-cart-form">
+                                    <div class="wsus__selectbox">
+                                        <div class="row">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            @foreach ($product->variants as $variant )
+                                                @if($variant->status != 0)
+                                                <div class="col-xl-6 col-sm-6">
+                                                    <h5 class="mb-2">{{$variant->name}}:</h5>
+                                                    <select class="select_2" name="variants_items[]">
+                                                        @foreach ($variant->productVariantItems as $items)
+                                                            @if ($items->status != 0)
+                                                                <option value="{{$items->id}}" {{ $items->is_default == 1 ? 'selected' : '' }}>{{$items->name}} (${{$items->price}})</option>
+                                                            @endif
+                                                        @endforeach    
+                                                    </select>
+                                                </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="wsus__quentity">
+                                        <h5>quentity :</h5>
+                                        <div class="select_number">
+                                            <input name="qty" class="number_area" type="text" min="1" max="100" value="1" />
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="wsus__button_area">
+                                        <li><button type="submit" class="add_cart">add to cart</button></li>
+                                        <li><a class="buy_now" href="#">buy now</a></li>
+                                        <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="far fa-random"></i></a></li>
+                                    </ul>
+                                </form>
+                                
+                                <p class="brand_model"><span>brand :</span> {{$product->brand->name}}</p>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+@endforeach
+
 @push('scripts')
 
    <script> 
@@ -430,6 +422,32 @@
             })
         })
    })
+
+
+   @php
+   
+    $range = request()->get('range');
+      if($range && !empty($range)){
+          $range = explode(';', $range);
+          $min = $range[0];
+          $max = $range[1];
+      }else{
+          $min = 0;
+          $max = 10000;
+      }
+
+   @endphp
+
+
+    jQuery(function () {
+        jQuery("#slider_range").flatslider({
+            min: 0, max: 10000,
+            step: 100,
+            values: [{{$min}}, {{$max}}],
+            range: true,
+            einheit: '$'
+        });
+    });
 
     </script>
 
