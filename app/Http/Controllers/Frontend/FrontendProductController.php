@@ -63,6 +63,28 @@ class FrontendProductController extends Controller
                     return $query->whereBetween('price', [$price[0], $price[1]]);
                 })  
                 ->paginate(12);
+        }elseif($request->has('search')){
+            $search = $request->search;
+            $products = Product::where('is_approved', 1)
+                ->where('status', 1)
+                ->where(function($query) use ($search){
+                    $query->where('name', 'LIKE', "%$search%")
+                          ->orWhere('short_description', 'LIKE', "%$search%")
+                          ->orWhere('long_description', 'LIKE', "%$search%");
+                })
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })  
+                ->paginate(12);
+        }else{
+            $products = Product::where('is_approved', 1)
+                ->where('status', 1)
+                ->when($request->has('range') && !empty($request->range), function($query) use ($request){
+                    $price = explode(';', $request->range);
+                    return $query->whereBetween('price', [$price[0], $price[1]]);
+                })  
+                ->paginate(12);
         }
         
 
@@ -74,9 +96,7 @@ class FrontendProductController extends Controller
 
     public function viewListType(Request $request){
         $view_type = $request->view_type;
-        session()->put('product_view_type', $view_type);
-       
-       
+        session()->put('product_view_type', $view_type);   
 
     }
 

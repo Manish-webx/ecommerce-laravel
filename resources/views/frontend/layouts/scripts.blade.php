@@ -124,6 +124,31 @@
                 })
             }
 
+            // wishlist functionality
+
+            $('.wishlist').on('click', function(e){
+                e.preventDefault();
+                let productId = $(this).data('id');
+                $.ajax({
+                    method: 'POST',
+                    url: "{{route('wishlist.store')}}",
+                    data: {
+                         productId : productId
+                    },
+                     success:function(data){
+                      if(data.status == 'success'){
+                            toastr.success(data.message);
+                      }else if(data.status == 'error'){
+                            toastr.error(data.message);
+                      }
+                        
+                     },
+                     error:function(data){
+                        console.log(data);
+                     }
+                })
+            })
+
                         
 
         })

@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,9 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'sidebarProduct
 
 Route::post('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('calculate-coupon', [CartController::class, 'calculateCoupon'])->name('calculate-coupon');
+
+Route::get('wishlist', [WishlistController::class, 'wishlistIndex'])->name('wishlist.index');
+Route::post('add-to-wishlist', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function(){
