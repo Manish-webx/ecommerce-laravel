@@ -58,6 +58,7 @@ Route::get('calculate-coupon', [CartController::class, 'calculateCoupon'])->name
 
 Route::get('wishlist', [WishlistController::class, 'wishlistIndex'])->name('wishlist.index');
 Route::post('add-to-wishlist', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
+Route::get('wishtlist-remove-product/{id}', [WishlistController::class, 'removeWishlistProduct'])->name('wishlist.remove-product');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function(){

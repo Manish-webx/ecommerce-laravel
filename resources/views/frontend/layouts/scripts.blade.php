@@ -126,7 +126,7 @@
 
             // wishlist functionality
 
-            $('.wishlist').on('click', function(e){
+            $('.add-to-wishlist').on('click', function(e){
                 e.preventDefault();
                 let productId = $(this).data('id');
                 $.ajax({
@@ -137,6 +137,7 @@
                     },
                      success:function(data){
                       if(data.status == 'success'){
+                            $('#wishlist_count').text(data.count);
                             toastr.success(data.message);
                       }else if(data.status == 'error'){
                             toastr.error(data.message);
