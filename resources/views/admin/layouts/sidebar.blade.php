@@ -95,6 +95,16 @@
             <li class="{{ setActive(['admin.child-category.*']) }}"><a class="nav-link" href="{{ route('admin.child-category.index') }}">Child Category</a></li>
           </ul>
         </li>
+        <li class="dropdown {{ setActive([
+            'admin.footer-info.*',
+            'admin.footer-socials.*'
+        ]) }}">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Footer</span></a>
+          <ul class="dropdown-menu">
+            <li class="{{ setActive(['admin.footer-info.*']) }}"><a class="nav-link" href="{{ route('admin.footer-info.index') }}">Footer Info</a></li>
+            <li class="{{ setActive(['admin.footer-socials.*']) }}"><a class="nav-link" href="{{ route('admin.footer-socials.index') }}">Footer Socials</a></li>
+          </ul>
+        </li>
         <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-square"></i> <span>Settings</span></a></li>
         {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
        

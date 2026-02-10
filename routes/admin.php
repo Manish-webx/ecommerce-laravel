@@ -2,29 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ChildCategoryController;
-use App\Http\Controllers\Backend\CouponController;
-use App\Http\Controllers\Backend\FlashSaleController;
-use App\Http\Controllers\Backend\HomepageSettingController;
 use App\Http\Controllers\Backend\OrderController;
-use App\Http\Controllers\Backend\PaymentSettingController;
-use App\Http\Controllers\Backend\PaypalSettingController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\ProductImageGalleryController;
-use App\Http\Controllers\Backend\ProductVariantController;
-use App\Http\Controllers\Backend\ProductVariantItemController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\RazorpaySettingController;
-use App\Http\Controllers\Backend\SellerProductController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\ShippingRuleController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\SliderController;
-use App\Http\Controllers\Backend\StripeSettingController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\FlashSaleController;
+use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TransactionController;
+use App\Http\Controllers\Backend\ShippingRuleController;
+use App\Http\Controllers\Backend\ChildCategoryController;
+use App\Http\Controllers\Backend\PaypalSettingController;
+use App\Http\Controllers\Backend\SellerProductController;
+use App\Http\Controllers\Backend\StripeSettingController;
+use App\Http\Controllers\Backend\PaymentSettingController;
+use App\Http\Controllers\Backend\ProductVariantController;
+use App\Http\Controllers\Backend\HomepageSettingController;
+use App\Http\Controllers\Backend\RazorpaySettingController;
+use App\Http\Controllers\Backend\AdminVendorProfileController;
+use App\Http\Controllers\Backend\FooterSocialController;
+use App\Http\Controllers\Backend\ProductVariantItemController;
+use App\Http\Controllers\Backend\ProductImageGalleryController;
 
 Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
@@ -131,3 +133,7 @@ Route::resource('order', OrderController::class);
 
 //Transcation Routes
 Route::get('transaction', [TransactionController::class, 'index'])->name('transaction.index');
+
+// Footer Info Routes
+Route::resource('footer-info', FooterInfoController::class);
+Route::resource('footer-socials', FooterSocialController::class);
