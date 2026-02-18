@@ -41,7 +41,7 @@ class FooterSocialController extends Controller
         $footerSocial->icon = $request->icon;
         $footerSocial->name = $request->name;
         $footerSocial->url = $request->url;
-        $footerSocial->status = $request->has('status') ? 1 : 0;
+        $footerSocial->status = $request->status;
         $footerSocial->save();
 
         toastr('Footer Social created successfully!', 'success');
@@ -52,17 +52,14 @@ class FooterSocialController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $footerSocial = FooterSocial::findOrFail($id);
+        return view('admin.footer.footer-social.edit', compact('footerSocial'));
     }
 
     /**
@@ -70,7 +67,23 @@ class FooterSocialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'icon' => 'required',
+            'name' => 'required',
+            'url' => 'required|url',
+            'status' => 'required'
+        ]);
+
+        $footerSocial = FooterSocial::findOrFail($id);
+        $footerSocial->icon = $request->icon;
+        $footerSocial->name = $request->name;
+        $footerSocial->url = $request->url;
+        $footerSocial->status = $request->status;
+        $footerSocial->save();
+
+        toastr('Footer Social updated successfully!', 'success');
+
+        return redirect()->route('admin.footer-socials.index');
     }
 
     /**
@@ -78,6 +91,18 @@ class FooterSocialController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $footerSocial = FooterSocial::findOrFail($id);
+        $footerSocial->delete();
+
+        return response(['status' => 'success', 'message' => 'Footer Social deleted successfully!']);
+    }
+
+    public function changeStatus(Request $request){
+
+        $footerSocial = FooterSocial::findOrFail($request->id);
+        $footerSocial->status = $request->status == "true" ? 1 : 0;
+        $footerSocial->save();
+
+        return response(['message' => 'Status Updated Successfully']);
     }
 }

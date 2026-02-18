@@ -55,7 +55,7 @@
           
             $.ajax({
     
-              url : "{{ route('admin.coupons.change-status') }}",
+              url : "{{ route('admin.footer-social.change-status') }}",
               method : 'PUT',
               
               data : {

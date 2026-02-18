@@ -136,4 +136,7 @@ Route::get('transaction', [TransactionController::class, 'index'])->name('transa
 
 // Footer Info Routes
 Route::resource('footer-info', FooterInfoController::class);
+
+// Footer Social Routes
+Route::put('footer-social/change-status', [FooterSocialController::class, 'changeStatus'])->name('footer-social.change-status');
 Route::resource('footer-socials', FooterSocialController::class);
