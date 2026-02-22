@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Frontend\CheckoutController;
-use App\Http\Controllers\Frontend\PaymentController;
-use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
@@ -59,6 +60,10 @@ Route::get('calculate-coupon', [CartController::class, 'calculateCoupon'])->name
 Route::get('wishlist', [WishlistController::class, 'wishlistIndex'])->name('wishlist.index');
 Route::post('add-to-wishlist', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
 Route::get('wishtlist-remove-product/{id}', [WishlistController::class, 'removeWishlistProduct'])->name('wishlist.remove-product');
+
+// Newsletter Route
+Route::post('subscribe-newsletter', [NewsletterController::class, 'subscribeNewsletter'])->name('subscribe-newsletter');
+Route::get('verify-newsletter/{token}', [NewsletterController::class, 'verifyNewsletter'])->name('subscriber.verify');
 
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function(){

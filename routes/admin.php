@@ -105,6 +105,7 @@ Route::resource('shipping-rule', ShippingRuleController::class);
 // General Settings Routes
 Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('/general-setting-update', [SettingController::class, 'generalSettingUpdate'])->name('general-setting-update');
+Route::put('/email-setting-update', [SettingController::class, 'emailSettingUpdate'])->name('email-setting-update');
 
 // Homepage Setting Routes
 Route::get('/home-page-setting', [HomepageSettingController::class, 'index'])->name('home-page-setting');

@@ -60,9 +60,9 @@
                     <h3>Subscribe To Our Newsletter</h3>
                     <p>Get all the latest information on Events, Sales and Offers.
                         Get all the latest information on Events.</p>
-                    <form>
-                        <input type="text" placeholder="Search...">
-                        <button type="submit" class="common_btn">subscribe</button>
+                    <form action="" method="POST" id="newsletter">
+                        <input class="subscribe_input" type="email" name="email" placeholder="Enter Your Email" required>
+                        <button type="submit" class="common_btn subscribe_btn">subscribe</button>
                     </form>
                     <div class="footer_payment">
                         <p>We're using safe payment for :</p>
