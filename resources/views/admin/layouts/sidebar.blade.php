@@ -105,6 +105,7 @@
             <li class="{{ setActive(['admin.footer-socials.*']) }}"><a class="nav-link" href="{{ route('admin.footer-socials.index') }}">Footer Socials</a></li>
           </ul>
         </li>
+         <li><a class="nav-link" href="{{route('admin.newsletter-subscribers.index')}}"><i class="far fa-square"></i> <span>Newsletter Subscribers</span></a></li>
         <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-square"></i> <span>Settings</span></a></li>
         {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
        

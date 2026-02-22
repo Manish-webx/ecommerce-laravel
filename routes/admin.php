@@ -27,6 +27,8 @@ use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\ProductVariantItemController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
+use App\Http\Controllers\Backend\NewsletterSubscriberController;
+
 
 Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
@@ -141,3 +143,8 @@ Route::resource('footer-info', FooterInfoController::class);
 // Footer Social Routes
 Route::put('footer-social/change-status', [FooterSocialController::class, 'changeStatus'])->name('footer-social.change-status');
 Route::resource('footer-socials', FooterSocialController::class);
+
+// Newsletter Subscribers Route
+Route::get('newsletter-subscribers', [NewsletterSubscriberController::class, 'index'])->name('newsletter-subscribers.index');
+Route::delete('newsletter-subscriber/{id}/destroy', [NewsletterSubscriberController::class, 'destroy'])->name('newsletter-subscriber.destroy');
+Route::post('newsletter/send', [NewsletterSubscriberController::class, 'sendNewsletter'])->name('newsletter.send');
